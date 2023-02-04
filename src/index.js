@@ -26,6 +26,7 @@ async function searchWikipedia(searchQuery) {
 
 function displayResults(results) {
   const searchResults = document.querySelector(".js-search-results");
+  searchResults.innerHTML = "";
 
   results.query.search.forEach((result) => {
     const url = `https://en.wikipedia.org/?curid=${result.pageid}`;
