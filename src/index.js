@@ -15,7 +15,7 @@ async function handleSubmit(event) {
 }
 
 async function searchWikipedia(searchQuery) {
-  const endpoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${searchQuery}`;
+  const endpoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=${searchQuery}`;
   const response = await fetch(endpoint);
   if (!response.ok) {
     throw Error(response.statusText);
@@ -34,7 +34,7 @@ function displayResults(results) {
     searchResults.insertAdjacentHTML(
       "beforeend",
       `<div class="result-item">
-        <h3 class="result-title" onclick="handleDisplayArticle(event)" wikiURL='${url}'>${result.title}</h3>
+        <h3 class="result-title" onclick="handleDisplayArticle(event)" pageid='${result.pageid}' wikiURL='${url}'>${result.title}</h3>
         <span class="result-snippet">${result.snippet}...</span><br>
       </div>`
     );
@@ -45,6 +45,32 @@ async function handleDisplayArticle(event) {
   const wikiFrame = document.getElementById("wiki-frame");
   const url = event.currentTarget.attributes.wikiURL.value;
   wikiFrame.src = url;
+
+  handleReadArticle(event);
+}
+
+async function handleReadArticle(event) {
+  const pageid = event.currentTarget.attributes.pageid.value;
+  const url = `https://en.wikipedia.org/w/api.php?action=query&utf8=&format=json&origin=*&prop=extracts&pageids=${pageid}`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  const json = await response.json();
+  const html = json.query.pages[`${pageid}`].extract;
+
+  var div = document.createElement("div");
+  div.innerHTML = html;
+
+  const text = div.innerText;
+  console.log(text);
+  var message = new SpeechSynthesisUtterance();
+  // message.volume = volume_up_down.value;
+  // message.voice = voiceList[voice_options.value];
+  // message.rate = rate_up_down.value;
+  // message.pitch = pitch_up_down.value;
+  message.text = text;
+  window.speechSynthesis.speak(message);
 }
 
 const form = document.querySelector(".js-search-form");
