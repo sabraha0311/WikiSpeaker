@@ -34,13 +34,17 @@ function displayResults(results) {
     searchResults.insertAdjacentHTML(
       "beforeend",
       `<div class="result-item">
-        <h3 class="result-title">
-          <a href="${url}" target="_blank" rel="noopener">${result.title}</a>
-        </h3>
-        <span class="result-snippet">${result.snippet}</span><br>
+        <h3 class="result-title" onclick="handleDisplayArticle(event)" wikiURL='${url}'>${result.title}</h3>
+        <span class="result-snippet">${result.snippet}...</span><br>
       </div>`
     );
   });
+}
+
+async function handleDisplayArticle(event) {
+  const wikiFrame = document.getElementById("wiki-frame");
+  const url = event.currentTarget.attributes.wikiURL.value;
+  wikiFrame.src = url;
 }
 
 const form = document.querySelector(".js-search-form");
