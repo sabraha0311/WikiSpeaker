@@ -70,6 +70,7 @@ async function handleReadArticle(event) {
   // message.rate = rate_up_down.value;
   // message.pitch = pitch_up_down.value;
   message.text = text;
+  window.speechSynthesis.cancel();
   window.speechSynthesis.speak(message);
 }
 
