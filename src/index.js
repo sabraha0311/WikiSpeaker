@@ -34,7 +34,7 @@ function displayResults(results) {
     searchResults.insertAdjacentHTML(
       "beforeend",
       `<div class="result-item">
-        <h3 class="result-title" onclick="handleDisplayArticle(event)" pageid='${result.pageid}' wikiURL='${url}'>${result.title}</h3>
+        <h3 class="result-title" onclick="handleDisplayArticle(event)" pageid='${result.pageid}' title='${result.title}' wikiURL='${url}'>${result.title}</h3>
         <span class="result-snippet">${result.snippet}...</span><br>
       </div>`
     );
@@ -51,6 +51,7 @@ async function handleDisplayArticle(event) {
 
 async function handleReadArticle(event) {
   const pageid = event.currentTarget.attributes.pageid.value;
+  const title = event.currentTarget.attributes.title.value;
   const url = `https://en.wikipedia.org/w/api.php?action=query&utf8=&format=json&origin=*&prop=extracts&pageids=${pageid}`;
   const response = await fetch(url);
   if (!response.ok) {
@@ -59,17 +60,17 @@ async function handleReadArticle(event) {
   const json = await response.json();
   const html = json.query.pages[`${pageid}`].extract;
 
-  var div = document.createElement("div");
-  div.innerHTML = html;
+  const wikiTitle = document.getElementById("wiki-title");
+  wikiTitle.innerText = title;
+  const wikiContent = document.getElementById("wiki-content");
+  wikiContent.innerHTML = html;
 
-  const text = div.innerText;
-  console.log(text);
   var message = new SpeechSynthesisUtterance();
   // message.volume = volume_up_down.value;
   // message.voice = voiceList[voice_options.value];
   // message.rate = rate_up_down.value;
   // message.pitch = pitch_up_down.value;
-  message.text = text;
+  message.text = wikiContent.innerText;
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(message);
 }
