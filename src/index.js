@@ -66,13 +66,13 @@ async function handleReadArticle(event) {
   wikiContent.innerHTML = html;
 
   var message = new SpeechSynthesisUtterance();
-  // message.volume = volume_up_down.value;
-  // message.voice = voiceList[voice_options.value];
-  // message.rate = rate_up_down.value;
-  // message.pitch = pitch_up_down.value;
   message.text = wikiContent.innerText;
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(message);
+
+  //Next steps = Pause, Play/Resume, Volume/Rate/Pitch sliders, Dropdown voice
+  const voices = window.speechSynthesis.getVoices(); // How to get new voices to update message.
+  console.log(voices);
 }
 
 const form = document.querySelector(".js-search-form");
