@@ -75,5 +75,71 @@ async function handleReadArticle(event) {
   console.log(voices);
 }
 
+function populateVoices() {
+  voices = getVoices();
+  voicesDropdown.innerHTML = voices
+    // .filter(voice => voice.lang.eincludes('en')) //only english
+    .map(
+      (voice) =>
+        `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`
+    )
+    .join("");
+}
+
+function getVoices() {
+  return window.speechSynthesis.getVoices();
+}
+
+function setVoice(event) {
+  selectedVoice = event.target.selectedOptions[0].value;
+  msg.voice = getVoices().find((voice) => voice.name === selectedVoice);
+}
+
+function toggle(event, startOver = false) {
+  if (startOver) {
+    speechSynthesis.cancel();
+    speechSynthesis.speak(msg);
+    //set button text to "pause"
+  } else if (speechSynthesis.speaking && !speechSynthesis.paused) {
+    speechSynthesis.pause();
+    //set button text to "play"
+  } else if (speechSynthesis.speaking && speechSynthesis.paused) {
+    speechSynthesis.resume();
+    //set button text to "pause"
+  } else {
+    speechSynthesis.cancel();
+    speechSynthesis.speak(msg);
+    //set button text to "pause"
+  }
+}
+
+function textOver(event) {
+  console.log("test");
+  //set button text to "play"
+}
+
+function setOption() {
+  console.log(this.name, this.value);
+  msg[this.name] = this.value;
+  toggle();
+}
+
+const msg = new SpeechSynthesisUtterance();
+let voices = [];
+const voicesDropdown = document.querySelector('[name="voice"]');
+const options = document.querySelectorAll('[type="range"], [name="text"]'); // includes text box
+const speakButton = document.getElementById("speakButton");
+//const stopButton = document.querySelector("#stop");
+msg.text = document.querySelector('[name="text"]').value;
+msg.addEventListener("end", textOver);
+
+populateVoices();
+
+speechSynthesis.addEventListener("voiceschanged", populateVoices);
+voicesDropdown.addEventListener("change", setVoice);
+options.forEach((option) => option.addEventListener("change", setOption));
+speakButton.addEventListener("click", toggle);
+//stopButton.addEventListener("click", toggle.bind(null, false));
+
 const form = document.querySelector(".js-search-form");
 form.addEventListener("submit", handleSubmit);
