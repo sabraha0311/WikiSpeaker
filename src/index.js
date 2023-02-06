@@ -40,7 +40,6 @@ function displayResults(results) {
     );
   });
 }
-
 async function handleDisplayArticle(event) {
   const wikiFrame = document.getElementById("wiki-frame");
   const url = event.currentTarget.attributes.wikiURL.value;
@@ -60,17 +59,15 @@ async function handleReadArticle(event) {
   const json = await response.json();
   const html = json.query.pages[`${pageid}`].extract;
 
-  const wikiTitle = document.getElementById("wiki-title");
-  wikiTitle.innerText = title;
-  const wikiContent = document.getElementById("wiki-content");
+  // const wikiTitle = document.getElementById("wiki-title");
+  // wikiTitle.innerText = title;
+  const wikiContent = document.createElement("div"); //document.getElementById("wiki-content");
   wikiContent.innerHTML = html;
 
-  var message = new SpeechSynthesisUtterance();
-  message.text = wikiContent.innerText;
+  msg.text = wikiContent.innerText;
   window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(message);
+  window.speechSynthesis.speak(msg);
 
-  //Next steps = Pause, Play/Resume, Volume/Rate/Pitch sliders, Dropdown voice
   const voices = window.speechSynthesis.getVoices(); // How to get new voices to update message.
   console.log(voices);
 }
@@ -91,8 +88,22 @@ function getVoices() {
 }
 
 function setVoice(event) {
-  selectedVoice = event.target.selectedOptions[0].value;
+  const selectedVoice = event.target.selectedOptions[0].value;
   msg.voice = getVoices().find((voice) => voice.name === selectedVoice);
+}
+
+function setOption() {
+  console.log(this.name, this.value);
+  msg[this.name] = this.value;
+
+  //window.speechSynthesis.pause();
+  //window.speechSynthesis.resume();
+  //window.speechSynthesis.speak(msg);
+  //toggle();
+}
+
+function reset(event) {
+  toggle(event, true);
 }
 
 function toggle(event, startOver = false) {
@@ -113,15 +124,9 @@ function toggle(event, startOver = false) {
   }
 }
 
-function textOver(event) {
+function buttonNameSwitch(event) {
   console.log("test");
   //set button text to "play"
-}
-
-function setOption() {
-  console.log(this.name, this.value);
-  msg[this.name] = this.value;
-  toggle();
 }
 
 const msg = new SpeechSynthesisUtterance();
@@ -129,9 +134,8 @@ let voices = [];
 const voicesDropdown = document.querySelector('[name="voice"]');
 const options = document.querySelectorAll('[type="range"], [name="text"]'); // includes text box
 const speakButton = document.getElementById("speakButton");
-//const stopButton = document.querySelector("#stop");
-msg.text = document.querySelector('[name="text"]').value;
-msg.addEventListener("end", textOver);
+const resetButton = document.getElementById("resetButton");
+msg.addEventListener("end", buttonNameSwitch);
 
 populateVoices();
 
@@ -139,7 +143,7 @@ speechSynthesis.addEventListener("voiceschanged", populateVoices);
 voicesDropdown.addEventListener("change", setVoice);
 options.forEach((option) => option.addEventListener("change", setOption));
 speakButton.addEventListener("click", toggle);
-//stopButton.addEventListener("click", toggle.bind(null, false));
+resetButton.addEventListener("click", reset);
 
 const form = document.querySelector(".js-search-form");
 form.addEventListener("submit", handleSubmit);
