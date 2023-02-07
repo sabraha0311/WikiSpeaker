@@ -1,1 +1,1 @@
-# WikiSpeaker
+With WikiSpeaker the user can look up a topic that they would like to learn about then Wikipedia options will be listed. The user can select an option and use the WikiSpeaker to play, pause, and reset the audio that will be reading from the selected Wikipedia option. The user can select different voices, choose a language from the Wikipedia preview and from the voice dropdown list, adjust the rate, and adjust the pitch of the voice. 
