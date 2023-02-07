@@ -1,6 +1,32 @@
-html {
-  box-sizing: border-box;
-}
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 25s ease infinite;
+  height: 200vh;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  @keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  
+  50% {
+    background-position: 100% 50%;
+  }
+  
+  100% {
+    background-position: 0% 50%;
+    }
+  }
+
+
+
+
+
+
+
 
 *,
 *::before,
@@ -11,16 +37,16 @@ html {
 }
 
 :root {
-  --bg-color: #fff;
-  --border-color: hsl(0, 0%, 83%);
-}
+  --bg-color: rgb(177, 21, 185);
+  --border-color: hsl(230, 68%, 53%);
+} */
 
 body {
   background-color: var(--bg-color);
   font-family: 'Poppins', sans-serif;
 }
 
-.header {
+.logo-text-box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +58,7 @@ body {
 
 .logo {
   margin-bottom: 30px;
-  width: 150px;
+  width: 260px;
 }
 
 .search-input {
@@ -100,7 +126,7 @@ body {
   left: 0;
   top: 0;
   animation: sk-chase-dot 2.0s infinite ease-in-out both;
-}
+} */
 
 .sk-chase-dot:before {
   content: '';
@@ -110,7 +136,7 @@ body {
   background-color: #333;
   border-radius: 100%;
   animation: sk-chase-dot-before 2.0s infinite ease-in-out both;
-}
+} */
 
 .sk-chase-dot:nth-child(1) {
   animation-delay: -1.1s;
@@ -199,4 +225,107 @@ body {
     padding-left: 20px;
     padding-right: 20px;
   }
+}
+
+#Welcome-to {
+  text-decoration: unset;
+  text-align: center;
+  color: rgb(27, 120, 170);
+  font-family: cursive;
+}
+
+#WikiSpeaker {
+  text-decoration: unset;
+  text-align: center;
+  color: rgb(82, 48, 202);
+  font-family: fantasy;
+  font-size: x-large;
+}
+
+#WikiSpeakerBottomText {
+  /* background-color: #d57549; */
+  text-decoration: unset;
+  text-align: center;
+  color: rgb(82, 48, 202);
+  font-family: fantasy;
+  font-size: x-large;
+  text-decoration: underline
+}
+
+/* #Header-color {
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+} */
+
+
+
+
+#Header-color {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 150% 200%;
+  animation: gradient 25s ease infinite;
+  height: 15vh;
+  }
+  
+  @keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  
+  50% {
+    background-position: 100% 50%;
+  }
+  
+  100% {
+    background-position: 0% 50%;
+    }
+  }
+
+
+#Footer {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 150% 200%;
+  animation: gradient 25s ease infinite;
+  height: 15vh;
+  }
+  
+  @keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  
+  50% {
+    background-position: 100% 50%;
+  }
+  
+  100% {
+    background-position: 0% 50%;
+    }
+  }
+
+
+.voiceinator {
+  border-radius: 37px;
+  background: #8e84bc;
+  height: 40vh;
+  width: 300px;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 100px;
+  padding-bottom: 0px;
+  margin: auto;
+}
+
+/* #wiki-frame {
+  width: 1000;
+  height: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+} */
+
+.result-title {
+  text-decoration: underline
 }

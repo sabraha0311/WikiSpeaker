@@ -6,29 +6,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
   <title>WikiSpeaker</title>
+  <link href="styles/index.css" rel="stylesheet">
+  <!-- <script src="src/index.js"></script>  -->
 </head>
-
 <body>
   <main>
-
-    <header>
-      <h1>Welcome to</h1>
-      <h2>WikiSpeaker</h2>
+    <header id="Header-color">
+      <h1 id="Welcome-to">Welcome to</h1>
+      <h2 id="WikiSpeaker">WikiSpeaker</h2>
     </header>
-
-    <header class="header">
+    <div class="logo-text-box">
       <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/657px-Wikipedia-logo-v2.svg.png" alt="Wikipedia Logo" 
         width="300" 
         height="300"
       />
-
       <form class="search-form js-search-form">
         <input placeholder="Type a keyword and press Enter to search" type="search" class="search-input js-search-input" autofocus />
       </form>
-    </header>
+    </div>
+
+  </section>
+    <section class="search-results js-search-results">
+  </section>
 
     <div class="loading-indicator">
       <div class="sk-chase js-spinner hidden">
@@ -40,7 +41,7 @@
         <div class="sk-chase-dot"></div>
       </div>
     </div>
-    <section class="wiki js-wiki-article">
+    <section class="wiki-js-wiki-article">
       <iframe id="wiki-frame"
       width="800"
       height="600"
@@ -50,31 +51,35 @@
       <div id="wiki-title"></div>
       <div id="wiki-content"></div>
     </div>
-    </section>
-    <section class="search-results js-search-results">
-    </section>
 
     <div class="voiceinator">
 
-    <h1>WikiSpeaker</h1>
+    <h1 id="WikiSpeakerBottomText">WikiSpeaker</h1>
 
+    <div>
     <select name="voice" id="voices">
       <option value="">Select A Voice</option>
     </select>
+    </div>
 
+    <div>
     <label for="rate">Rate:</label>
     <input name="rate" type="range" min="0" max="3" value="1" step="0.1">
+    </div>
 
+    <div>
     <label for="pitch">Pitch:</label>
     <input name="pitch" type="range" min="0" max="2" step="0.1">
+    </div>
 
-    <!-- <textarea id="textTest" name="text">Hello world!</textarea> -->
-
-    <button type="button" id="speakButton">Play/Resume</button> 
+    <div>
+    <button type="button" id="speakButton">Play/Stop</button> 
     <button type="button" id="resetButton">Reset</button> 
+    </div>
 
     </div>
   </main>
   <script type="text/javascript" src="src/index.js"></script>
+  <footer id="Footer"></footer>
 </body>
 </html>
