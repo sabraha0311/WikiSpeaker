@@ -59,8 +59,8 @@ async function handleReadArticle(event) {
   const json = await response.json();
   const html = json.query.pages[`${pageid}`].extract;
 
-  const wikiTitle = document.getElementById("wiki-title");
-  wikiTitle.innerText = title;
+  // const wikiTitle = document.getElementById("wiki-title");
+  // wikiTitle.innerText = title;
 
   const wikiContent = document.createElement("div"); //document.getElementById("wiki-content");
   wikiContent.innerHTML = html;
