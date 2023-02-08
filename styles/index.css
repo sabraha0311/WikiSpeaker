@@ -308,7 +308,7 @@ body {
   border-radius: 37px;
   background: #8e84bc;
   height: 40vh;
-  width: 300px;
+  width: 500px;
   text-align: center;
   padding-left: 50px;
   padding-right: 50px;
@@ -317,15 +317,20 @@ body {
   margin: auto;
 }
 
-/* #wiki-frame {
-  width: 1000;
+#wiki-frame {
+  width: 500;
   height: 600;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-} */
+  margin: 0 auto;
+}
 
 .result-title {
   text-decoration: underline
+}
+
+.hidden {
+  display: none;
 }

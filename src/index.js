@@ -39,11 +39,20 @@ function displayResults(results) {
       </div>`
     );
   });
+
+  // when h3 is clicked it'll trigger handledisplayarticle func - within this func look up the clicked h3 and add class to it called visited-links - do css for visited-link (similar to hidden class)
 }
 async function handleDisplayArticle(event) {
   const wikiFrame = document.getElementById("wiki-frame");
   const url = event.currentTarget.attributes.wikiURL.value;
   wikiFrame.src = url;
+
+  wikiFrame.classList.remove("hidden");
+
+  // function myFunction() {
+  //     var element = document.getElementById("myDIV");
+  //     element.classList.remove("mystyle");
+  //   }
 
   handleReadArticle(event);
 }

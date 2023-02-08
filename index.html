@@ -23,7 +23,7 @@
         height="300"
       />
       <form class="search-form js-search-form">
-        <input placeholder="Type a keyword and press Enter to search" type="search" class="search-input js-search-input" autofocus />
+        <input placeholder="Type in a topic and press Enter to search through Wikipedia" type="search" class="search-input js-search-input" autofocus />
       </form>
     </div>
 
@@ -41,12 +41,7 @@
         <div class="sk-chase-dot"></div>
       </div>
     </div>
-    <section class="wiki-js-wiki-article">
-      <iframe id="wiki-frame"
-      width="800"
-      height="600"
-      src="">
-    </iframe>
+
     <div id="wiki-article">
       <div id="wiki-title"></div>
       <div id="wiki-content"></div>
@@ -78,6 +73,13 @@
     </div>
 
     </div>
+
+    <section class="wiki-js-wiki-article">
+      <iframe id="wiki-frame" class="hidden"
+      width="800"
+      height="600"
+      src="">
+    </iframe>
   </main>
   <script type="text/javascript" src="src/index.js"></script>
   <footer id="Footer"></footer>
