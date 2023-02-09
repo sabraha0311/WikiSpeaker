@@ -319,6 +319,10 @@ body {
   text-decoration: underline
 }
 
+.result-title {
+  font-size: 25px;
+}
+
 .hidden {
   display: none !important;
 }
