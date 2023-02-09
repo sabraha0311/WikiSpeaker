@@ -51,7 +51,7 @@ body {
 
 .logo {
   margin-bottom: 30px;
-  width: 260px;
+  width: 320px;
 }
 
 .search-input {
@@ -59,7 +59,7 @@ body {
   border-radius: 3px;
   padding: 10px;
   border: 1px solid var(--border-color);
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .search-input:focus,
@@ -70,12 +70,12 @@ body {
 
 .search-results {
   width: 100%;
-  max-width: 600px;
+  max-width: 750px;
   margin: 0 auto;
 }
 
 .result-item {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .result-title {
@@ -84,8 +84,8 @@ body {
 }
 
 .result-snippet {
-  font-size: 15px;
-  color: #444;
+  font-size: 20px;
+  color: rgb(80, 74, 114);
 }
 
 .result-link {
@@ -225,6 +225,7 @@ body {
   text-align: center;
   color: rgb(27, 120, 170);
   font-family: cursive;
+  font-size: 30px;
 }
 
 #WikiSpeaker {
@@ -232,7 +233,7 @@ body {
   text-align: center;
   color: rgb(82, 48, 202);
   font-family: fantasy;
-  font-size: x-large;
+  font-size: 38px;
 }
 
 #WikiSpeakerBottomText {
@@ -241,7 +242,7 @@ body {
   text-align: center;
   color: rgb(82, 48, 202);
   font-family: fantasy;
-  font-size: x-large;
+  font-size: 60;
   text-decoration: underline
 }
 
@@ -272,6 +273,7 @@ body {
   background-size: 150% 200%;
   animation: gradient 25s ease infinite;
   height: 15vh;
+  margin-top: 40px;
   }
   
   @keyframes gradient {
@@ -300,6 +302,7 @@ body {
   padding-top: 100px;
   padding-bottom: 0px;
   margin: auto;
+  margin-bottom: 40px;
 }
 
 #wiki-frame {
