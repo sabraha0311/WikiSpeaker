@@ -39,20 +39,14 @@ function displayResults(results) {
       </div>`
     );
   });
-
-  // when h3 is clicked it'll trigger handledisplayarticle func - within this func look up the clicked h3 and add class to it called visited-links - do css for visited-link (similar to hidden class)
 }
 async function handleDisplayArticle(event) {
   const wikiFrame = document.getElementById("wiki-frame");
   const url = event.currentTarget.attributes.wikiURL.value;
   wikiFrame.src = url;
 
+  event.currentTarget.classList.add("result-title-visited");
   wikiFrame.classList.remove("hidden");
-
-  // function myFunction() {
-  //     var element = document.getElementById("myDIV");
-  //     element.classList.remove("mystyle");
-  //   }
 
   handleReadArticle(event);
 }
@@ -68,24 +62,21 @@ async function handleReadArticle(event) {
   const json = await response.json();
   const html = json.query.pages[`${pageid}`].extract;
 
-  // const wikiTitle = document.getElementById("wiki-title");
-  // wikiTitle.innerText = title;
-
-  const wikiContent = document.createElement("div"); //document.getElementById("wiki-content");
+  const wikiContent = document.createElement("div");
   wikiContent.innerHTML = html;
 
   msg.text = wikiContent.innerText;
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(msg);
 
-  const voices = window.speechSynthesis.getVoices(); // How to get new voices to update message.
+  const voices = window.speechSynthesis.getVoices();
   console.log(voices);
 }
 
 function populateVoices() {
   voices = getVoices();
   voicesDropdown.innerHTML = voices
-    // .filter(voice => voice.lang.eincludes('en')) //only english
+
     .map(
       (voice) =>
         `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`
@@ -105,11 +96,6 @@ function setVoice(event) {
 function setOption() {
   console.log(this.name, this.value);
   msg[this.name] = this.value;
-
-  //window.speechSynthesis.pause();
-  //window.speechSynthesis.resume();
-  //window.speechSynthesis.speak(msg);
-  //toggle();
 }
 
 function reset(event) {
@@ -120,23 +106,18 @@ function toggle(event, startOver = false) {
   if (startOver) {
     speechSynthesis.cancel();
     speechSynthesis.speak(msg);
-    //set button text to "pause"
   } else if (speechSynthesis.speaking && !speechSynthesis.paused) {
     speechSynthesis.pause();
-    //set button text to "play"
   } else if (speechSynthesis.speaking && speechSynthesis.paused) {
     speechSynthesis.resume();
-    //set button text to "pause"
   } else {
     speechSynthesis.cancel();
     speechSynthesis.speak(msg);
-    //set button text to "pause"
   }
 }
 
 function buttonNameSwitch(event) {
   console.log("test");
-  //set button text to "play"
 }
 
 const msg = new SpeechSynthesisUtterance();

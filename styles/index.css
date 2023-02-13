@@ -237,7 +237,6 @@ body {
 }
 
 #WikiSpeakerBottomText {
-  /* background-color: #d57549; */
   text-decoration: unset;
   text-align: center;
   color: rgb(82, 48, 202);
@@ -316,11 +315,12 @@ body {
 }
 
 .result-title {
-  text-decoration: underline
+  text-decoration: underline;
+  font-size: 25px;
 }
 
-.result-title {
-  font-size: 25px;
+.result-title-visited {
+  color:rgb(82, 48, 202);
 }
 
 .hidden {
